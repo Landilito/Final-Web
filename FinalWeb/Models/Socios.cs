@@ -14,18 +14,22 @@ namespace FinalWeb.Models
         public string Apellido { get; set; }
         public string Cedula { get; set; }
         public string Direccion { get; set; }
-        public int Telefono { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string Telefono { get; set; }
         public string Sexo { get; set; }
         public int Edad { get; set; }
-        public DateTime Nacimiento { get; set; }
+        [DataType(DataType.Date)]
+        public string Nacimiento { get; set; }
         public Afiliado Afiliados { get; set; }
         public Membresia Membresia { get; set; }
         public string LugarTrabajo { get; set; }
         public string DireccionOficina { get; set; }
         public string TelefonoOficina { get; set; }
         public Estado Estado { get; set; }
-        public DateTime FechaIngreso { get; set; }
-        public DateTime FechaSalida { get; set; }
+        [DataType(DataType.Date)]
+        public string FechaIngreso { get; set; }
+        [DataType(DataType.Date)]
+        public string FechaSalida { get; set; }
     }
 
     public enum Afiliado

@@ -1,10 +1,10 @@
 ﻿@model FinalWeb.Models.Socios
 
 @{
-    ViewBag.Title = "Details";
+    
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Socios</h4>
@@ -32,6 +32,15 @@
 
         <dd>
             @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Foto)*@
+            <img width="100" src="@Url.Action("buscarImagen", "Socios", new { id = Model.SociosID})" alt="imagen_socio" />
         </dd>
 
         <dt>
@@ -91,7 +100,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LugarTrabajo)
+            @Html.DisplayName("Lugar de trabajo")
         </dt>
 
         <dd>
@@ -99,7 +108,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DireccionOficina)
+            @Html.DisplayName("Direccion oficina")
         </dt>
 
         <dd>
@@ -107,7 +116,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TelefonoOficina)
+            @Html.DisplayName("Telefono oficina")
         </dt>
 
         <dd>
@@ -123,7 +132,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            @Html.DisplayName("Fecha ingreso")
         </dt>
 
         <dd>
@@ -131,7 +140,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaSalida)
+            @Html.DisplayName("Fecha salida")
         </dt>
 
         <dd>
@@ -141,6 +150,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SociosID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.SociosID }) |
+    @Html.ActionLink("Volver a socios", "Index")
 </p>

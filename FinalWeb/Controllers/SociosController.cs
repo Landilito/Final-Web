@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using FinalWeb.Context;
 using FinalWeb.Models;
+using Image = System.Drawing.Image;
 
 namespace FinalWeb.Controllers
 {
@@ -47,8 +53,14 @@ namespace FinalWeb.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SociosID,Nombre,Apellido,Cedula,Direccion,Telefono,Sexo,Edad,Nacimiento,Afiliados,Membresia,LugarTrabajo,DireccionOficina,TelefonoOficina,Estado,FechaIngreso,FechaSalida")] Socios socios)
+        public ActionResult Create([Bind(Include = "SociosID,Nombre,Apellido,Foto,Cedula,Direccion,Telefono,Sexo,Edad,Nacimiento,Afiliados,Membresia,LugarTrabajo,DireccionOficina,TelefonoOficina,Estado,FechaIngreso,FechaSalida")] Socios socios)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            WebImage imagen = new WebImage(FileBase.InputStream);
+            socios.Foto = imagen.GetBytes();
+
+
             if (ModelState.IsValid)
             {
                 db.Socios.Add(socios);
@@ -123,6 +135,21 @@ namespace FinalWeb.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult buscarImagen(int id)
+        {
+            Socios socio = db.Socios.Find(id);
+            byte[] imagenEnByte = socio.Foto;
+
+            MemoryStream memoria = new MemoryStream(imagenEnByte);
+            Image image = Image.FromStream(memoria);
+
+            memoria = new MemoryStream();
+            image.Save(memoria, ImageFormat.Jpeg);
+            memoria.Position = 0;
+
+            return File(memoria, "image/jpg");
         }
     }
 }

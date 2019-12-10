@@ -22,3 +22,59 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*FOOTER*/
+
+
+
+#nada {
+    list-style-type: none;
+    margin-left: 1vw;
+}
+
+    li:first-child {
+        margin: 0;
+    }
+
+footer {
+    background-color: dodgerblue;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+}
+
+.content {
+    height: 50vh;
+    background-color: lightgray;
+}
+
+/*.container {
+    background-color: beige;
+}*/
+
+.copyright, .impressum {
+    text-align: center;
+}
+
+.logo {
+    height: 8vh;
+}
+
+@media (max-width: 768px) {
+    #nada {
+        margin-left: 0;
+        margin-bottom: 1vh;
+    }
+
+    .sozial {
+        margin-bottom: 1vh;
+    }
+}
+
+/*#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}*/
+

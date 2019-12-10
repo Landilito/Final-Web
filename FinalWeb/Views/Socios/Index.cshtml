@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Socios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo socio", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,7 +54,7 @@
             @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            @Html.DisplayName("Fecha ingreso")
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.FechaSalida)
@@ -113,9 +113,9 @@
             @Html.DisplayFor(modelItem => item.FechaSalida)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SociosID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SociosID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SociosID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.SociosID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.SociosID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.SociosID })
         </td>
     </tr>
 }
